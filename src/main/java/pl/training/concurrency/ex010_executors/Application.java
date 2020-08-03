@@ -1,5 +1,6 @@
 package pl.training.concurrency.ex010_executors;
 
+import java.util.List;
 import java.util.concurrent.*;
 
 public class Application {
@@ -14,6 +15,18 @@ public class Application {
         executorService.shutdown();
         executorService.awaitTermination(WAIT_TIME, TimeUnit.SECONDS);
         System.out.printf("Result: %d", futureTask.get());
+
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(THREADS_COUNT);
+        scheduledExecutorService.schedule(new Multiplication(2, 5), WAIT_TIME, TimeUnit.SECONDS);
+        scheduledExecutorService.shutdown();
+
+        ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(THREADS_COUNT);
+        List<Future<Integer>> results = threadPoolExecutor.invokeAll(List.of(new Multiplication(2, 5), new Multiplication(2, 6)));
+        //threadPoolExecutor.shutdown();
+        threadPoolExecutor.awaitTermination(10, TimeUnit.SECONDS);
+        results.stream()
+                .map(Future::isDone)
+                .forEach(System.out::println);
     }
 
 }
