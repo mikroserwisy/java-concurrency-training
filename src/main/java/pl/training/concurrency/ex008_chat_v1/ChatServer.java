@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 public class ChatServer {
 
     private final Logger logger = Logger.getLogger(getClass().getName());
+    private final ChatWorkers chatWorkers = new ChatWorkers();
 
     public static void main(String[] args) {
         int port = Integer.parseInt(args[0]);
@@ -26,8 +27,13 @@ public class ChatServer {
 
     private void listen(ServerSocket serverSocket, int port) throws IOException {
         logger.log(Level.INFO, "Server is listening on port: " + port);
-        Socket socket = serverSocket.accept();
-        logger.log(Level.INFO, "New connection established...");
+        while (true) {
+            Socket socket = serverSocket.accept();
+            logger.log(Level.INFO, "New connection established...");
+            ChatWorker chatWorker = new ChatWorker(socket, chatWorkers);
+            chatWorkers.add(chatWorker);
+            new Thread(chatWorker).start();
+        }
     }
 
 }
