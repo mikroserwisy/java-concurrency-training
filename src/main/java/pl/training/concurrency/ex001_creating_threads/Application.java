@@ -9,8 +9,8 @@ public class Application {
         threadOne.start();
         Thread threadTwo = new Thread(printTime);
         threadTwo.start();
-        Thread thread = new PrintTimeThread();
-        thread.start();
+        Thread threadThree = new PrintTimeThread();
+        threadThree.start();
     }
 
 }
