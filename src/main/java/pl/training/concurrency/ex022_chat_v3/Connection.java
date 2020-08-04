@@ -1,14 +1,14 @@
 package pl.training.concurrency.ex022_chat_v3;
 
+import lombok.extern.java.Log;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
+@Log
 public class Connection {
-
-    private final Logger logger = Logger.getLogger(getClass().getName());
 
     private PrintWriter writer;
 
@@ -16,7 +16,7 @@ public class Connection {
         try {
             writer = new PrintWriter(socket.getOutputStream(), true);
         } catch (IOException ex) {
-            logger.log(Level.SEVERE, "Creating output stream failed - " + ex.getMessage());
+            log.log(Level.INFO,  "Creating output stream failed - " + ex.getMessage());
         }
     }
 
