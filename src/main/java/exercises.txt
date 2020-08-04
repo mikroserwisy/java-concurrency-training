@@ -3,7 +3,7 @@ Zaprojektuj mechanizm / algorytm synchronizujący korzystanie z łazienki w firm
 - jednocześnie w łazience nie może przebywać więcej niż 3 osoby
 
 Napisz kod symulujący fabrykowanie molekuły H20
-- każdy atom reprezentowany jest przez osobny wątek (wątki produkują określone atomy)
+- każdy atom produkowany jest przez osobny wątek
 - program powinien zaczekać, aż możliwe będzie stworzenie pełnej molekuły, zanim rozpocznie budowanie kolejnej
 - wątki mogą być tworzone w dowolnej kolejności, mogą też produkować atomy z dowolną prędkością
 
