@@ -1,4 +1,4 @@
-package pl.training.concurrency.solution01;
+package pl.training.concurrency.solution1;
 
 import java.util.concurrent.Semaphore;
 
