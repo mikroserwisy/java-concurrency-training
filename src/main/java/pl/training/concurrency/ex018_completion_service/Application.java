@@ -13,6 +13,8 @@ public class Application {
         Printer printer = new Printer(completionService);
         executorService.execute(printer);
         completionService.submit(new ReportGenerator());
+        completionService.submit(new ReportGenerator());
+        completionService.submit(new ReportGenerator());
         executorService.shutdown();
     }
 

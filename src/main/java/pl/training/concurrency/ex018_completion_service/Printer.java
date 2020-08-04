@@ -13,10 +13,12 @@ public class Printer implements Runnable {
 
     @Override
     public void run() {
-        try {
-            System.out.println("Report: " + completionService.take().get());
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+        while (true) {
+            try {
+                System.out.println("Report: " + completionService.take().get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
         }
     }
 
