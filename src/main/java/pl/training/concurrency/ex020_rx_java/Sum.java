@@ -1,4 +1,4 @@
-package pl.training.concurrency.ex019_Promises;
+package pl.training.concurrency.ex020_rx_java;
 
 import java.util.concurrent.Callable;
 
@@ -18,8 +18,8 @@ public class Sum implements Callable<Integer> {
     public Integer call() {
         try {
             Thread.sleep(SLEEP_TIME);
-        } catch (InterruptedException exception) {
-            exception.printStackTrace();
+        } catch (InterruptedException e) {
+            System.out.println("Stopping sum thread");
         }
         return firstValue + secondValue;
     }

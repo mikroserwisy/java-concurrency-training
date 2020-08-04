@@ -1,4 +1,4 @@
-package pl.training.concurrency.ex019_Promises;
+package pl.training.concurrency.ex019_promises;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;

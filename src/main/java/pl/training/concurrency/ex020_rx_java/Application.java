@@ -1,13 +1,12 @@
-package pl.training.concurrency.ex020_RxJava;
+package pl.training.concurrency.ex020_rx_java;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,6 +18,8 @@ public class Application {
         CompositeDisposable compositeDisposable = new CompositeDisposable();
 
         Observable<String> observable = Observable.just("Java", "PHP", "JavaScript", "ActionScript");
+
+        Observable<String> name = Observable.fromIterable(List.of("1", "2", "3"));
 
         compositeDisposable.add(observable.map(String::toLowerCase)
                 .filter(language -> language.contains("java"))
