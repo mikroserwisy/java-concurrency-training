@@ -1,3 +1,0 @@
-Zaprojektuj mechanizm / algorytm synchronizujący korzystanie z łazienki w firmie przy założeniu następujących warunków:
-- nie można doprowadzić do tego, że do łazienki wejdzie kobieta i mężczyzna
-- jednocześnie w łazience nie może przebywać więcej niż 3 osoby
