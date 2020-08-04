@@ -45,6 +45,7 @@ public class Application {
     }
 
     private void start() {
+        Runtime.getRuntime().addShutdownHook(new Thread(compositeDisposable::dispose));
         compositeDisposable.add(ObservableReader.from(System.in)
                 .debounce(5, TimeUnit.SECONDS)
                 .flatMap(this::sendWikipediaQuery)
