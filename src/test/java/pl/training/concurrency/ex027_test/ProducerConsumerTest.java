@@ -32,11 +32,11 @@ public class ProducerConsumerTest extends MultithreadedTestCase {
         System.out.println("Thread 1: " + store.take());
     }
 
-    void thread3() throws InterruptedException {
+    void thread3() {
         waitForTick(1);
         store.put("Java");
         waitForTick(2);
-        waitForTick(1);
+        waitForTick(1); // ignored
         store.put("Scala");
         System.out.println("Thread 3: Inserted 2 elements");
     }
