@@ -6,12 +6,15 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import pl.training.concurrency.ex021_rx_search.github.GithubService;
+import pl.training.concurrency.ex021_rx_search.github.Repository;
 import pl.training.concurrency.ex021_rx_search.wikipedia.Article;
 import pl.training.concurrency.ex021_rx_search.wikipedia.WikipediaService;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
@@ -35,19 +38,47 @@ public class Application {
         System.out.println("Processing item on thread " + Thread.currentThread().getName());
     }
 
-    private Observable<String> sendWikipediaQuery(String query) {
+    private List<String> combine(List<String> result, String value) {
+        result.add(value);
+        return result;
+    }
+
+    private List<String> combineResults(List<String> resultOne, List<String> resultTwo) {
+        List<String> result = new ArrayList<>();
+        result.addAll(resultOne);
+        result.addAll(resultTwo);
+        return result;
+    }
+
+    private Observable<List<String>> sendWikipediaQuery(String query) {
         return wikipediaService.getArticles(query)
                 .flatMap(Observable::fromIterable)
                 .map(Article::getTitle)
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.newThread());
+                .reduce(new ArrayList<>(), this::combine)
+                .toObservable()
+                .subscribeOn(Schedulers.io());
+    }
+
+    private Observable<List<String>> sendGithubQuery(String query) {
+        return githubService.getRepositories(query)
+                .flatMap(Observable::fromIterable)
+                .map(Repository::getName)
+                .reduce(new ArrayList<>(), this::combine)
+                .toObservable()
+                .subscribeOn(Schedulers.io());
     }
 
     private void start() {
         Runtime.getRuntime().addShutdownHook(new Thread(compositeDisposable::dispose));
-        compositeDisposable.add(ObservableReader.from(System.in)
+        /*compositeDisposable.add(ObservableReader.from(System.in)
                 .debounce(5, TimeUnit.SECONDS)
                 .flatMap(this::sendWikipediaQuery)
+                .subscribe(System.out::println, System.out::println, () -> System.out.println("Completed")));*/
+
+        compositeDisposable.add(ObservableReader.from(System.in)
+                .flatMap(query -> Observable.zip(sendWikipediaQuery(query), sendGithubQuery(query),  this::combineResults))
+                .flatMap(Observable::fromIterable)
+                .map(String::toLowerCase)
                 .subscribe(System.out::println, System.out::println, () -> System.out.println("Completed")));
     }
 
