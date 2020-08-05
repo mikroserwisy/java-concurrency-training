@@ -20,5 +20,8 @@ wątkom działanie gdy dostępny jest token. Jeśli żaden token nie jest dostę
 zostać zablokowane. Klasa powinna udostępniać metodę o nazwie getToken, która skutkuje blokadą wątku do
 czasu dostępności tokenu.
 
-
+Zaimplementuj kolejkę blokującą używając:
+- blokad niejawnych (monitora)
+- blokad jawnych
+- semafora
 

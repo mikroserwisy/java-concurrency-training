@@ -39,7 +39,6 @@ public class Application {
         return wikipediaService.getArticles(query)
                 .flatMap(Observable::fromIterable)
                 .map(Article::getTitle)
-                //.doOnNext(this::showThreadInfo)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread());
     }

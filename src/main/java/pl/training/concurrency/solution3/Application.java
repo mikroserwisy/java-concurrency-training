@@ -2,6 +2,8 @@ package pl.training.concurrency.solution3;
 
 import java.util.Random;
 
+import static pl.training.concurrency.common.ThreadUtils.asyncRun;
+
 public class Application {
 
     public static void main(String[] args) throws InterruptedException {
@@ -16,22 +18,6 @@ public class Application {
         }
 
         barberThread.join();
-    }
-
-    interface Task {
-
-        void run() throws InterruptedException;
-
-    }
-
-    private static Thread asyncRun(Task task) {
-        return new Thread(() -> {
-            try {
-                task.run();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
 }
