@@ -13,3 +13,12 @@ Zakład fryzjerski posiada N krzeseł dla klientów i jednego fryzjera
 - jeśli klient wejdzie do salonu i nie ma wolnych krzeseł rezygnuje (opuszcza sklep)
 - jeśli fryzjer śpi klient go budzi / aktywuje
 Napisz program koordynujący opisane interakcje
+
+Wyobraź sobie, że masz pojemnik, który wypełnia się tokenami z szybkością 1 na sekundę.
+Pojemnik może pomieścić maksymalnie N tokenów. Zaimplementuj klasę bezpieczną wielowątkowo, która umożliwia
+wątkom działanie gdy dostępny jest token. Jeśli żaden token nie jest dostępny, wątki żądające tokenu powinny
+zostać zablokowane. Klasa powinna udostępniać metodę o nazwie getToken, która skutkuje blokadą wątku do
+czasu dostępności tokenu.
+
+
+
