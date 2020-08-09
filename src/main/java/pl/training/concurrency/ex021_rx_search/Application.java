@@ -15,6 +15,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Application {
 
@@ -33,20 +34,17 @@ public class Application {
                 .build();
     }
 
-    private <T> void showThreadInfo(T input) {
-        System.out.println("Processing item on thread " + Thread.currentThread().getName());
-    }
-
     private List<String> combine(List<String> result, String value) {
-        result.add(value);
-        return result;
+        List<String> newResult = new ArrayList<>(result);
+        newResult.add(value);
+        return newResult;
     }
 
-    private List<String> combineResults(List<String> resultOne, List<String> resultTwo) {
-        List<String> result = new ArrayList<>();
-        result.addAll(resultOne);
-        result.addAll(resultTwo);
-        return result;
+    private List<String> combineResults(List<String> results, List<String> otherResults) {
+        List<String> newResults = new ArrayList<>();
+        newResults.addAll(results);
+        newResults.addAll(otherResults);
+        return results;
     }
 
     private Observable<List<String>> sendWikipediaQuery(String query) {
@@ -68,24 +66,31 @@ public class Application {
     }
 
     private void start() {
-        Runtime.getRuntime().addShutdownHook(new Thread(compositeDisposable::dispose));
-        /*compositeDisposable.add(ObservableReader.from(System.in)
-                .debounce(5, TimeUnit.SECONDS)
-                .flatMap(this::sendWikipediaQuery)
-                .subscribe(System.out::println, System.out::println, () -> System.out.println("Completed")));*/
+        Runtime.getRuntime()
+                .addShutdownHook(new Thread(compositeDisposable::dispose));
 
-        compositeDisposable.add(ObservableReader.from(System.in)
-                .flatMap(query -> Observable.zip(sendWikipediaQuery(query), sendGithubQuery(query),  this::combineResults))
-                .flatMap(Observable::fromIterable)
-                .map(String::toLowerCase)
-                .subscribe(System.out::println, System.out::println, () -> System.out.println("Completed")));
+        /*compositeDisposable.add(
+                ObservableReader.from(System.in)
+                    .flatMap(this::sendWikipediaQuery)
+                    .subscribe(System.out::println, System.out::println, () -> System.out.println("Completed"))
+        );*/
+
+
+        compositeDisposable.add(
+                ObservableReader.from(System.in)
+                        .debounce(5, TimeUnit.SECONDS)
+                        .flatMap(query -> Observable.zip(sendWikipediaQuery(query), sendGithubQuery(query), this::combineResults))
+                        .flatMap(Observable::fromIterable)
+                        .map(String::toLowerCase)
+                        .subscribe(System.out::println, System.out::println, () -> System.out.println("Completed"))
+        );
     }
+
 
     public static void main(String[] args) throws InterruptedException {
         new Application().start();
         Thread.sleep(10_000);
     }
-
 }
 
 /*
