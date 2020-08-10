@@ -26,7 +26,7 @@ Zaimplementuj kolejkę blokującą używając:
 - semafora
 
 Wyobraź sobie, że pod koniec konferencji politycznej partia X i partia Y próbują opuścić miejsce i jednocześnie
-zamawiają przejazdy taxi. Aby jednak upewnić się, że podczas jazdy taxi nie wybuchnie żadna walka, programiści
+zamawiają przejazdy taxiManager. Aby jednak upewnić się, że podczas jazdy taxiManager nie wybuchnie żadna walka, programiści
 opracowali algorytm, zgodnie z którym przejazd jest możliwy gdy w samochodzie będą tylko politycy partii X lub partii Y
 lub dwóch partii X i dwóch partii Y. Wszystkie inne kombinacje mogą skutkować walką.
 Twoim zadaniem jako programisty jest zamodelowanie przejazdów jako wątków.
