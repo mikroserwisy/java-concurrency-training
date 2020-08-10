@@ -9,6 +9,11 @@ public class BoundedSemaphore {
         this.maxPermits = maxPermits;
     }
 
+    public BoundedSemaphore(int maxPermits, int initialPermits) {
+        this.maxPermits = maxPermits;
+        this.usedPermits = this.maxPermits - initialPermits;
+    }
+
     public synchronized void acquire() throws InterruptedException {
         while (usedPermits == maxPermits) {
             wait();
