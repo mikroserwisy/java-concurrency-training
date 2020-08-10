@@ -17,7 +17,7 @@ import static pl.training.concurrency.common.ThreadUtils.sleep;
 
 public class TaskWithPhasesTest {
 
-    private static final int TIMEOUT = 1_000;
+    private static final int TIMEOUT = 100_000;
     private static final int PARTIES =3;
 
     private final Phaser phaser = new TestPhaser(PARTIES);

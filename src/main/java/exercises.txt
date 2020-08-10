@@ -25,10 +25,10 @@ Zaimplementuj kolejkę blokującą używając:
 - blokad jawnych
 - semafora
 
-Wyobraź sobie, że pod koniec konferencji politycznej republikanie i demokraci próbują opuścić miejsce i jednocześnie
-zamawiają przejazdy taxi. Aby jednak upewnić się, że podczas jazdy Uber nie wybuchnie żadna walka, programiści Uber
-opracowali algorytm, zgodnie z którym przejazd jest możliwy gdy w samochodzie będą tylko demokraci lub republikanie
-lub dwóch demokratów i dwóch republikanów. Wszystkie inne kombinacje mogą skutkować walką.
+Wyobraź sobie, że pod koniec konferencji politycznej partia X i partia Y próbują opuścić miejsce i jednocześnie
+zamawiają przejazdy taxi. Aby jednak upewnić się, że podczas jazdy taxi nie wybuchnie żadna walka, programiści
+opracowali algorytm, zgodnie z którym przejazd jest możliwy gdy w samochodzie będą tylko politycy partii X lub partii Y
+lub dwóch partii X i dwóch partii Y. Wszystkie inne kombinacje mogą skutkować walką.
 Twoim zadaniem jako programisty jest zamodelowanie przejazdów jako wątków.
 
 Wyobraź sobie, że masz pięciu filozofów siedzących przy okrągłym stole. Filozofowie wykonują tylko dwa rodzaje działań -
