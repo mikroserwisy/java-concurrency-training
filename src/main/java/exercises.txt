@@ -25,3 +25,16 @@ Zaimplementuj kolejkę blokującą używając:
 - blokad jawnych
 - semafora
 
+Wyobraź sobie, że pod koniec konferencji politycznej republikanie i demokraci próbują opuścić miejsce i jednocześnie
+zamawiają przejazdy taxi. Aby jednak upewnić się, że podczas jazdy Uber nie wybuchnie żadna walka, programiści Uber
+opracowali algorytm, zgodnie z którym przejazd jest możliwy gdy w samochodzie będą tylko demokraci lub republikanie
+lub dwóch demokratów i dwóch republikanów. Wszystkie inne kombinacje mogą skutkować walką.
+Twoim zadaniem jako programisty jest zamodelowanie przejazdów jako wątków.
+
+Wyobraź sobie, że masz pięciu filozofów siedzących przy okrągłym stole. Filozofowie wykonują tylko dwa rodzaje działań -
+kontemplują lub jedzą. Jednak mają między sobą tylko pięć widelców, którymi mogą jeść jedzenie.
+Każdy filozof potrzebuje zarówno widelca po lewej, jak i widelca po prawej, aby jeść swoje jedzenie.
+Zaprojektuj rozwiązanie, w którym każdy filozof będzie miał szansę zjeść swoje jedzenie bez powodowania deadlocka
+
+Zaimplementuj algorytm merge-sort z użyciem dowolnych mechanizmów poznanych w czasie szkolenia oraz wykorzystując
+fork-join
