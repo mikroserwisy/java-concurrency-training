@@ -1,0 +1,5 @@
+https://helion.pl/ksiazki/reactive-programming-with-rxjava-creating-asynchronous-event-based-applications-tomasz-nurkiewicz-ben-christensen,e_09le.htm#format/e
+https://www.bookdepository.com/Java-Concurrency-in-Practice-Brian-Goetz/9780321349606?redirected=true&utm_medium=Google&utm_campaign=Base1&utm_source=PL&utm_content=Java-Concurrency-in-Practice&selectCurrency=PLN&w=AF75AU9SF7QPQ7A8VCJF&gclid=Cj0KCQjwg8n5BRCdARIsALxKb97u1dYJpxGdLPFZtD3VLE0qas5XHmx_8ronNQcGvScoqT3OKNQ-TqYaAjQdEALw_wcB
+https://www.amazon.co.uk/dp/193435676X?linkCode=gs2&tag=javarevisit01-21
+https://store.raywenderlich.com/products/kotlin-coroutines-by-tutorials
+https://store.raywenderlich.com/products/reactive-programming-with-kotlin
