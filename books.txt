@@ -3,3 +3,4 @@ https://www.bookdepository.com/Java-Concurrency-in-Practice-Brian-Goetz/97803213
 https://www.amazon.co.uk/dp/193435676X?linkCode=gs2&tag=javarevisit01-21
 https://store.raywenderlich.com/products/kotlin-coroutines-by-tutorials
 https://store.raywenderlich.com/products/reactive-programming-with-kotlin
+https://greenteapress.com/wp/semaphores/
