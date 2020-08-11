@@ -31,10 +31,27 @@ opracowali algorytm, zgodnie z którym przejazd jest możliwy gdy w samochodzie 
 lub dwóch partii X i dwóch partii Y. Wszystkie inne kombinacje mogą skutkować walką.
 Twoim zadaniem jako programisty jest zamodelowanie przejazdów jako wątków.
 
+Stworzyć prostą bazę danych (bez użycia dodatkowych bibliotek)
+Wymagania / feauters:
+- baza powinna zapisywać dane na dysku, ale w celu optymalizacji cachować dane w pamięci ram
+- baza powinna umożliwiać dostęp lokalny (referencja do obiektu) jak i zdalny (dowolny protokół komunikacji)
+- baza powinna umożliwiać równoległy i bezpieczny dostęp wielu klientów w trybie odczyt / zapis  (pełen crud)
+- baza powinna umożliwiać przechowywanie tabel zawierających kolumny z podstawowymi typami danych jak text, wartości numeryczne, bool
+- baza powinna umożliwiać odczyt rekordów po id (kluczu głównym) oraz wyszukiwanie  po wartości określonej komórki
+- baza powinna umożliwiać wykorzystanie prostych funkcji agregujących np. suma, min, max dla wskazanych kolumn
+- baza powinna posiadać prosty UI (Swing lub JavaFx)
+- baza powinna zapewniać mechanizm logowania tego co się dzieje w systemie
+- baza powinna rozgłaszać informacje na temat zmian stanu umożliwiając klientom nasłuchiwanie informacji np. o tym, że
+jakiś rekord został dodany lub zmieniony
+Postaraj się wykorzystać mechanizmy poznane na szkoleniu, uzasadnij podejmowane decyzje, postaraj się zwrócić
+uwagę na takie aspekty jak bezpieczeństwo i wydajność
+
+Opcjonalnie:
 Wyobraź sobie, że masz pięciu filozofów siedzących przy okrągłym stole. Filozofowie wykonują tylko dwa rodzaje działań -
 kontemplują lub jedzą. Jednak mają między sobą tylko pięć widelców, którymi mogą jeść jedzenie.
 Każdy filozof potrzebuje zarówno widelca po lewej, jak i widelca po prawej, aby jeść swoje jedzenie.
 Zaprojektuj rozwiązanie, w którym każdy filozof będzie miał szansę zjeść swoje jedzenie bez powodowania deadlocka
 
+Opcjonalnie:
 Zaimplementuj algorytm merge-sort z użyciem dowolnych mechanizmów poznanych w czasie szkolenia oraz wykorzystując
 fork-join
